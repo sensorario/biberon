@@ -1,6 +1,6 @@
 # Biberon
 
-![biberon.png](biberon.png)
+![biberon2.png](biberon2.png)
 
 ## Example
 
