@@ -9,7 +9,7 @@ class Detector
     const COLOR_VIOLET = "\033[0;36m";
     const COLOR_RESET = "\033[0m";
 
-    private $dictionary;
+    private $dictionary = [];
 
     private $colors = [];
 
