@@ -16,6 +16,8 @@ class Detector
     public function setColors(array $colors)
     {
         $this->colors = $colors;
+
+        return $this;
     }
 
     public function setDictionary(array $dictionary)
