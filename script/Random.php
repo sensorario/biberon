@@ -26,13 +26,7 @@ for ($i = 0; $i < 100; $i++) {
     usleep(1000);
     $item = rand(11111, 99999);
     $detector->echoDetection($item);
-
-    if ($stat->isEndOfLine()) {
-        $stat->echoEndOfLine();
-        $stat->resetColumnCounter();
-    } else {
-        $stat->updateCounters();
-    }
+    $stat->step();
 }
 
 echo "\n";

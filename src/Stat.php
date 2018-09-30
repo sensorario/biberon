@@ -55,4 +55,14 @@ class Stat
         if ($this->isFirstLine()) { echo " "; }
         echo " (" . $this->get('print') . "/" . $this->get('count') . ") \n";
     }
+
+    public function step()
+    {
+        if ($this->isEndOfLine()) {
+            $this->echoEndOfLine();
+            $this->resetColumnCounter();
+        } else {
+            $this->updateCounters();
+        }
+    }
 }
