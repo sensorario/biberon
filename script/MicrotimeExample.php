@@ -5,8 +5,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 passthru("clear");
 passthru("figlet microtime");
 
-use Sensorario\Biberon\Stat;
-use Sensorario\Biberon\Biberon;
 use Sensorario\Biberon\Detector;
 
 $detector = new Detector();
@@ -27,19 +25,20 @@ for ($i = 0; $i < 666; $i++) {
     $data[] = rand(1, 99999);
 }
 
-$stat = new Stat();
+$show = new Sensorario\Biberon\Show(
+    $detector,
+    (new Sensorario\Biberon\Stat())->init([
+        'count' => count($data),
+        'column' => 0,
+        'print' => 0,
+        'columnsize' => 48,
+    ])
+);
 
-$stat->init([
-    'count' => count($data),
-    'column' => 0,
-    'print' => 0,
-    'columnsize' => 48,
-]);
-
-foreach ($data as $item) {
-    usleep(4000);
-    $detector->echoDetection($item);
-    $stat->step();
+while ($show->mustGoOn()) {
+    $show->next(function() {
+        return rand(11111, 99999);
+    });
 }
 
 echo "\n";
