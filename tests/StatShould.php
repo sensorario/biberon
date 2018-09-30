@@ -107,7 +107,7 @@ class StatShould extends TestCase
         $stat->echoEndOfLine();
         $output = ob_get_clean();
 
-        $this->assertEquals("  (7/1000) \n", $output);
+        $this->assertEquals("   (7/1000) \n", $output);
     }
 
     public function testEchoesEndOfLineAfterFirstLine()

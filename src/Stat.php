@@ -31,7 +31,7 @@ class Stat
 
     public function isFirstLine()
     {
-        return $this->params['print'] < $this->params['columnsize'];
+        return $this->params['print'] <= $this->params['columnsize'];
     }
 
     public function resetColumnCounter()
@@ -52,8 +52,8 @@ class Stat
 
     public function echoEndOfLine()
     {
-        if ($this->isFirstLine()) { echo " "; }
-        echo " (" . $this->get('print') . "/" . $this->get('count') . ") \n";
+        $output = "(" . $this->get('print') . "/" . $this->get('count') . ") \n";
+        echo str_pad($output, 13, " ", STR_PAD_LEFT);
     }
 
     public function step()
