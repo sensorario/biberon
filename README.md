@@ -1,5 +1,7 @@
 # Biberon
 
+[![Build Status](https://travis-ci.org/sensorario/biberon.svg?branch=master)](https://travis-ci.org/sensorario/biberon)
+
 ![biberon_microtime.png](biberon_microtime.png)
 ![biberon2.png](biberon2.png)
 
