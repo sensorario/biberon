@@ -25,7 +25,7 @@ $stat->init([
 for ($i = 0; $i < 100; $i++) {
     usleep(1000);
     $item = rand(11111, 99999);
-    $detector->echoDetection($item);
+    echo $detector->dot($item);
     $stat->step();
 }
 

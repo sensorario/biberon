@@ -25,18 +25,23 @@ class Detector
 
     public function echoDetection($item)
     {
+        echo $this->dot($item);
+    }
+
+    public function dot($item)
+    {
         foreach ($this->dictionary as $echo => $check) {
             if ($check($item)) {
                 if (isset($this->colors[$echo])) {
-                    echo $this->colors[$echo] . $echo . "\033[0m";
+                    return $this->colors[$echo] . $echo . "\033[0m";
                 } else {
-                    echo $echo;
+                    return $echo;
                 }
                 return;
             }
         }
 
-        echo '.';
+        return '.';
     }
 
     public function addRules(array $dictionary)
