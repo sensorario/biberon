@@ -14,7 +14,12 @@ class Stat
             $this->params = $params;
         }
 
+        $this->params['column'] = $this->params['column'] ?? 0;
+        $this->params['print'] = $this->params['print'] ?? 0;
+
         $this->alreadyInitialized = !$this->alreadyInitialized;
+
+        return $this;
     }
 
     public function alreadyInitialized()
