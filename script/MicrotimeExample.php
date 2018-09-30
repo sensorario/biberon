@@ -5,9 +5,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 passthru("clear");
 passthru("figlet microtime");
 
-use Sensorario\Progress\Stat;
-use Sensorario\Progress\Progress;
-use Sensorario\Progress\Detector;
+use Sensorario\Biberon\Stat;
+use Sensorario\Biberon\Biberon;
+use Sensorario\Biberon\Detector;
 
 $detector = new Detector();
 $detector->setColors([
