@@ -44,4 +44,14 @@ class DayIncrement implements StepStrategy
     {
         return $this->current->getTimestamp() < $this->end->getTimestamp();
     }
+
+    public function getStat()
+    {
+        return $this->stat;
+    }
+
+    public function getCurrent()
+    {
+        return $this->current;
+    }
 }

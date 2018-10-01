@@ -8,6 +8,8 @@ class Stat
 
     private $params;
 
+    private $numberOfRows = 1;
+
     public function init($params)
     {
         if (!$this->alreadyInitialized) {
@@ -31,7 +33,7 @@ class Stat
     {
         return
             $this->params['column'] > 0
-            && $this->params['column'] % $this->params['columnsize'] == 0;
+            && $this->params['column'] % ($this->params['columnsize'] - 1) == 0;
     }
 
     public function isFirstLine()
@@ -42,6 +44,7 @@ class Stat
     public function resetColumnCounter()
     {
         $this->params['column'] = 0;
+        $this->numberOfRows++;
     }
 
     public function updateCounters()
@@ -57,7 +60,7 @@ class Stat
 
     public function echoEndOfLine()
     {
-        $output = "(" . $this->get('print') . "/" . $this->get('count') . ") \n";
+        $output = "(" . ($this->numberOfRows * $this->get('columnsize')) . "/" . $this->get('count') . ") \n";
         echo str_pad($output, 13, " ", STR_PAD_LEFT);
     }
 

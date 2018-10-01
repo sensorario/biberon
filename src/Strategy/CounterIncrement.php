@@ -8,7 +8,7 @@ class CounterIncrement implements StepStrategy
 {
     private $started = false;
 
-    private $couter = 0;
+    private $counter = 0;
 
     public function __construct(Stat $stat)
     {
@@ -22,17 +22,22 @@ class CounterIncrement implements StepStrategy
 
     public function init()
     {
-        $this->couter = 0;
+        $this->counter = 0;
         $this->started = true;
     }
 
     public function step()
     {
-        $this->couter++;
+        $this->counter++;
     }
 
     public function wasLastStep()
     {
-        return $this->couter < $this->stat->get('count');
+        return $this->counter < $this->stat->get('count');
+    }
+
+    public function getCurrent()
+    {
+        return $this->counter;
     }
 }

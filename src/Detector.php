@@ -2,6 +2,8 @@
 
 namespace Sensorario\Biberon;
 
+use Sensorario\Biberon\Strategy\StepStrategy;
+
 class Detector
 {
     private $dictionary = [];
@@ -25,18 +27,14 @@ class Detector
         echo $this->dot($item);
     }
 
-    /** @todo inject also strategy ... */
-    public function dot($item)
+    public function dot($item, Strategy\StepStrategy $strategy)
     {
         foreach ($this->dictionary as $echo => $check) {
             $foo = is_callable($item)
                 ? $item()
                 : $item;
 
-            /** @todo use $check() passing also stragey */
-            /** @todo passing strategy, each step also knows Stat */
-
-            if ($check($foo)) {
+            if ($check($foo, $strategy)) {
                 if (isset($this->colors[$echo])) {
                     return $this->colors[$echo] . $echo . "\033[0m";
                 } else {
