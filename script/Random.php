@@ -21,6 +21,7 @@ $show = new Sensorario\Biberon\Show(
 );
 
 while ($show->mustGoOn()) {
+    /** @todo closure will receive strategy and stat */
     $show->next(function() {
         return rand(1, 10);
     });

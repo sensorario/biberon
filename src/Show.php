@@ -8,33 +8,48 @@ class Show
 
     private $stat;
 
-    private $started = false;
-
-    private $couter = 0;
+    private $strategy;
 
     public function __construct(
         Detector $detector,
+        /** @todo remove stat */
         Stat $stat
+        /** @todo pass strategy */
     ) {
         $this->detector = $detector;
         $this->stat = $stat;
+        //$this->strategy = new Strategy\CounterIncrement($this->stat);
+        $this->strategy = new Strategy\DayIncrement(
+            $this->stat,
+            new \DateTime('-40 days'),
+            new \DateTime('yesterday')
+        );
+
+        /** @todo extract stat from the strategy */
     }
 
     public function next($item)
     {
+        /** @todo pass strategy to dot method */
         echo $this->detector->dot($item);
+
         $this->stat->step();
     }
 
     public function mustGoOn()
     {
-        if ($this->started == false) {
-            $this->couter = 0;
-            $this->started = true;
+        if (!$this->strategy) {
+            throw new \RuntimeException(
+                'Oops! Missing strategy'
+            );
         }
 
-        $this->couter++;
+        if ($this->strategy->isFirstStep()) {
+            $this->strategy->init();
+        }
 
-        return $this->couter < $this->stat->get('count');
+        $this->strategy->step();
+
+        return $this->strategy->wasLastStep();
     }
 }
