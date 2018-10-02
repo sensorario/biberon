@@ -6,26 +6,17 @@ passthru("clear");
 
 echo "\n";
 
-/** @todo SHOW MUST RECEIVE JUST STRATEGY AND NO STEP */
 $show = new Sensorario\Biberon\Show(
     (new Sensorario\Biberon\Detector())->addRules([
-        'D' => function ($input, Sensorario\Biberon\Strategy\StepStrategy $strategy) {
-            return $strategy->getCurrent() == 7;
-            $day = $strategy->getCurrent()->format('D');
-            return 'Sun' == $day;
-        },
-        'S' => function ($input, Sensorario\Biberon\Strategy\StepStrategy $strategy) {
-            return $strategy->getCurrent() == 8;
-            $day = $strategy->getCurrent()->format('D');
-            return 'Sat' == $day;
-        },
+        'X' => function ($input) { return $input == 10; },
+        'I' => function ($input) { return $input == 1; },
     ])->setColors([
         'X' => Cli::red,
         'I' => Cli::green,
     ]),
     (new Sensorario\Biberon\Stat())->init([
         'count' => 100,
-        'columnsize' => 20,
+        'columnsize' => 33,
     ])
 );
 
