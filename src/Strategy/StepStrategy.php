@@ -8,4 +8,5 @@ interface StepStrategy
     public function init();
     public function step();
     public function wasLastStep();
+    public function getStat();
 }

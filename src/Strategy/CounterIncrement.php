@@ -40,4 +40,9 @@ class CounterIncrement implements StepStrategy
     {
         return $this->counter;
     }
+
+    public function getStat()
+    {
+        return $this->stat;
+    }
 }

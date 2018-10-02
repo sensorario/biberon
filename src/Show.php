@@ -12,20 +12,11 @@ class Show
 
     public function __construct(
         Detector $detector,
-        /** @todo remove stat */
-        Stat $stat
-        /** @todo pass strategy */
+        Strategy\StepStrategy $strategy
     ) {
         $this->detector = $detector;
-        $this->stat = $stat;
-        $this->strategy = new Strategy\CounterIncrement($this->stat);
-        //$this->strategy = new Strategy\DayIncrement(
-            //$this->stat,
-            //new \DateTime('-40 days'),
-            //new \DateTime('yesterday')
-        //);
-
-        /** @todo extract stat from the strategy */
+        $this->strategy = $strategy;
+        $this->stat = $this->strategy->getStat();
     }
 
     public function next($item)
