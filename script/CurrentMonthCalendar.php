@@ -9,9 +9,25 @@ echo "\n";
 /** @todo SHOW MUST RECEIVE JUST STRATEGY AND NO STEP */
 $show = new Sensorario\Biberon\Show(
     (new Sensorario\Biberon\Detector())->addRules([
+        'M' => function ($input, Sensorario\Biberon\Strategy\StepStrategy $strategy) {
+            $day = $strategy->getCurrent()->format('D');
+            return 'Mon' == $day;
+        },
+        'T' => function ($input, Sensorario\Biberon\Strategy\StepStrategy $strategy) {
+            $day = $strategy->getCurrent()->format('D');
+            return 'Tue' == $day || 'Thu' == $day;
+        },
+        'W' => function ($input, Sensorario\Biberon\Strategy\StepStrategy $strategy) {
+            $day = $strategy->getCurrent()->format('D');
+            return 'Wed' == $day;
+        },
         'D' => function ($input, Sensorario\Biberon\Strategy\StepStrategy $strategy) {
             $day = $strategy->getCurrent()->format('D');
             return 'Sun' == $day;
+        },
+        'F' => function ($input, Sensorario\Biberon\Strategy\StepStrategy $strategy) {
+            $day = $strategy->getCurrent()->format('D');
+            return 'Fri' == $day;
         },
         'S' => function ($input, Sensorario\Biberon\Strategy\StepStrategy $strategy) {
             $day = $strategy->getCurrent()->format('D');
@@ -23,11 +39,11 @@ $show = new Sensorario\Biberon\Show(
     ]),
     new Sensorario\Biberon\Strategy\DayIncrement(
         (new Sensorario\Biberon\Stat())->init([
-            'count' => 100,
-            'columnsize' => 20,
+            'count' => 4,
+            'columnsize' => 7,
         ]),
-        new \DateTime('-40 days'),
-        new \DateTime('yesterday')
+        new \DateTime('-2 days'),
+        new \DateTime('31 octo')
     )
 );
 
