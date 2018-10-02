@@ -22,5 +22,8 @@
             "Sensorario\\Biberon\\": "src",
             "Sensorario\\Tests\\Biberon\\": "tests"
         }
+    },
+    "require": {
+        "sensorario/colors": "^1.0"
     }
 }

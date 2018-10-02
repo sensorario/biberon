@@ -4,8 +4,39 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1acec2470d16d5655254f6d10bfad21b",
+    "content-hash": "cd815e10be5e45ac994ced256d053935",
     "packages": [
+        {
+            "name": "sensorario/colors",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sensorario/colors.git",
+                "reference": "fa6c0ccb9b1b313426cb01e288e572a60f1a217e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sensorario/colors/zipball/fa6c0ccb9b1b313426cb01e288e572a60f1a217e",
+                "reference": "fa6c0ccb9b1b313426cb01e288e572a60f1a217e",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Simone Gentili",
+                    "email": "sensorario@gmail.com"
+                }
+            ],
+            "time": "2018-10-02T23:26:09+00:00"
+        }
+    ],
+    "packages-dev": [
         {
             "name": "doctrine/instantiator",
             "version": "1.1.0",
@@ -1415,7 +1446,6 @@
             "time": "2018-01-29T19:49:41+00:00"
         }
     ],
-    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],

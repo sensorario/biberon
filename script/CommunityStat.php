@@ -15,8 +15,8 @@ use Sensorario\Biberon\Stat;
 
 $detector = new Detector();
 $detector->setColors([
-    'c' => Detector::COLOR_GREEN,
-    'o' => Detector::COLOR_RED,
+    'c' => Cli::green,
+    'o' => Cli::red,
 ]);
 $detector->addRules([
     'c' => function ($input) { return $input['state'] == 'closed'; },

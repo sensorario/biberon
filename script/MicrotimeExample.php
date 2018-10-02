@@ -9,12 +9,12 @@ use Sensorario\Biberon\Detector;
 
 $detector = new Detector();
 $detector->setColors([
-    'B' => Detector::COLOR_GREEN,
-    'p' => Detector::COLOR_RED,
-    'L' => Detector::COLOR_VIOLET,
+    'B' => Cli::blue,
+    'p' => Cli::red,
+    'L' => Cli::violet,
 ]);
 $detector->addRules([
-    'L' => function ($input) { return $input < 10000; },
+    'L' => function ($input) { return $input < 30000; },
     'B' => function ($input) { return $input > 70000; },
     'p' => function ($input) { return $input % 2 == 0; },
     'd' => function ($input) { return $input % 2 == 1; },

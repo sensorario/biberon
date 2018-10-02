@@ -11,8 +11,8 @@ $show = new Sensorario\Biberon\Show(
         'X' => function ($input) { return $input == 10; },
         'I' => function ($input) { return $input == 1; },
     ])->setColors([
-        'X' => Sensorario\Biberon\Detector::COLOR_RED,
-        'I' => Sensorario\Biberon\Detector::COLOR_GREEN,
+        'X' => Cli::red,
+        'I' => Cli::green,
     ]),
     (new Sensorario\Biberon\Stat())->init([
         'count' => 100,
