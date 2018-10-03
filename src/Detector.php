@@ -22,9 +22,9 @@ class Detector
         $this->dictionary = $dictionary;
     }
 
-    public function echoDetection($item)
+    public function echoDetection($item, Strategy\StepStrategy $strategy)
     {
-        echo $this->dot($item);
+        echo $this->dot($item, $strategy);
     }
 
     public function dot($item, Strategy\StepStrategy $strategy)

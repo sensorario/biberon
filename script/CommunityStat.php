@@ -10,6 +10,7 @@ passthru("figlet " . $community);
 
 use Sensorario\Biberon\Biberon;
 use Sensorario\Biberon\Detector;
+use Sensorario\Biberon\Strategy\CounterIncrement;
 use Sensorario\Biberon\Github\IssueLoader;
 use Sensorario\Biberon\Stat;
 
@@ -44,7 +45,7 @@ $stat->init([
 
 foreach ($data as $item) {
     usleep(1000);
-    $detector->echoDetection($item);
+    $detector->echoDetection($item, new CounterIncrement($stat));
     $stat->step();
 }
 

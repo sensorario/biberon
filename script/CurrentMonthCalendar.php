@@ -34,8 +34,8 @@ $show = new Sensorario\Biberon\Show(
             return 'Sat' == $day;
         },
     ])->setColors([
-        'S' => Sensorario\Biberon\Detector::COLOR_YELLOW,
-        'D' => Sensorario\Biberon\Detector::COLOR_RED,
+        'S' => Cli::yellow,
+        'D' => Cli::red,
     ]),
     new Sensorario\Biberon\Strategy\DayIncrement(
         (new Sensorario\Biberon\Stat())->init([

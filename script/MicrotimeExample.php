@@ -27,12 +27,14 @@ for ($i = 0; $i < 666; $i++) {
 
 $show = new Sensorario\Biberon\Show(
     $detector,
-    (new Sensorario\Biberon\Stat())->init([
-        'count' => count($data),
-        'column' => 0,
-        'print' => 0,
-        'columnsize' => 48,
-    ])
+    new Sensorario\Biberon\Strategy\CounterIncrement(
+        (new Sensorario\Biberon\Stat())->init([
+            'count' => count($data),
+            'column' => 0,
+            'print' => 0,
+            'columnsize' => 48,
+        ])
+    )
 );
 
 while ($show->mustGoOn()) {
