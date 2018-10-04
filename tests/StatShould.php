@@ -34,7 +34,7 @@ class StatShould extends TestCase
     {
         $stat = new stat();
         $stat->init([
-            'column' => 10,
+            'column' => 9,
             'columnsize' => 10,
         ]);
         $this->assertsame(true, $stat->isEndOfLine());
@@ -107,7 +107,7 @@ class StatShould extends TestCase
         $stat->echoEndOfLine();
         $output = ob_get_clean();
 
-        $this->assertEquals("   (7/1000) \n", $output);
+        $this->assertEquals("  (42/1000) \n", $output);
     }
 
     public function testEchoesEndOfLineAfterFirstLine()
@@ -124,6 +124,6 @@ class StatShould extends TestCase
         $stat->echoEndOfLine();
         $output = ob_get_clean();
 
-        $this->assertEquals(" (100/1000) \n", $output);
+        $this->assertEquals("  (42/1000) \n", $output);
     }
 }

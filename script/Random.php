@@ -14,10 +14,12 @@ $show = new Sensorario\Biberon\Show(
         'X' => Cli::red,
         'I' => Cli::green,
     ]),
-    (new Sensorario\Biberon\Stat())->init([
-        'count' => 100,
-        'columnsize' => 33,
-    ])
+    new Sensorario\Biberon\Strategy\CounterIncrement(
+        (new Sensorario\Biberon\Stat())->init([
+            'count' => 100,
+            'columnsize' => 33,
+        ])
+    )
 );
 
 while ($show->mustGoOn()) {

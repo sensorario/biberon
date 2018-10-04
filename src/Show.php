@@ -8,33 +8,48 @@ class Show
 
     private $stat;
 
-    private $started = false;
-
-    private $couter = 0;
+    private $strategy;
 
     public function __construct(
         Detector $detector,
-        Stat $stat
+        Strategy\StepStrategy $strategy
     ) {
         $this->detector = $detector;
-        $this->stat = $stat;
+        $this->strategy = $strategy;
+        $this->stat = $this->strategy->getStat();
     }
 
     public function next($item)
     {
-        echo $this->detector->dot($item);
+        $this->ensureStrategyIsDefined();
+
+        echo $this->detector->dot(
+            $item,
+            $this->strategy
+        );
+
         $this->stat->step();
     }
 
     public function mustGoOn()
     {
-        if ($this->started == false) {
-            $this->couter = 0;
-            $this->started = true;
+        $this->ensureStrategyIsDefined();
+
+        if ($this->strategy->isFirstStep()) {
+            $this->strategy->init();
         }
 
-        $this->couter++;
+        $this->strategy->step();
 
-        return $this->couter < $this->stat->get('count');
+        return $this->strategy->wasLastStep();
+    }
+
+    private function ensureStrategyIsDefined()
+    {
+        if (!$this->strategy) {
+            throw new \RuntimeException(
+                'Oops! Missing strategy'
+            );
+        }
     }
 }
